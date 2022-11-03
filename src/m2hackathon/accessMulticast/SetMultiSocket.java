@@ -36,25 +36,14 @@ public class SetMultiSocket
                 return 7001;
             case "C":
                 return 7002;
-            case "All":
+            case "D":
                 return 7003;
+            case "E":
+                return 7004;
+            case "F":
+                return 7005;
             default:
                 return -1;
         }
     }
-
-    //사용 가능한 포트번호를 리스트로 출력(추후에 사용 예정)
-//    public List<Integer> AvailablePort() {
-//        List<Integer> portArray = new ArrayList<>();
-//        for (int i = 1024; i < 65536; i++) {
-//            try {
-//                ServerSocket ss = new ServerSocket(i);
-//                ss.close();
-//            } catch (IOException ee) {
-//                portArray.add(i);
-//                break;
-//            }
-//        }
-//        return portArray;
-//    }
 }
