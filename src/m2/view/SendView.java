@@ -1,18 +1,26 @@
 package m2.view;
 
+import m2hackathon.mainMulticast.MainMulticastSocket;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.net.MulticastSocket;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 public class SendView extends JFrame{
     JLabel la = new JLabel("You");
-    SendView(String labelName){
+
+    MainMulticastSocket mainSocket = null;
+    SendView(MainMulticastSocket mainSocket){
         super("YourFrame");
+
+        this.mainSocket = mainSocket;
+
         setSize(600,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = getContentPane();
@@ -34,7 +42,7 @@ public class SendView extends JFrame{
         backBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //setVisible(false);
+                setVisible(false);
                 new MainView();
             }
         });
@@ -74,6 +82,8 @@ public class SendView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String msg = tf.getText();
                 //setVisible(false);
+
+                mainSocket.sendMessage(sendList, msg);
                 new DialogView(sendList, msg);
                 new RecView(msg);
             }

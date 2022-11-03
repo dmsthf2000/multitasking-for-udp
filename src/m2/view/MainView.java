@@ -1,4 +1,6 @@
 package m2.view;
+import m2hackathon.mainMulticast.MainMulticastSocket;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +12,9 @@ public class MainView extends JFrame {
     JButton jb2 = new JButton("B"); // 버튼 초기화
     JButton jb3 = new JButton("C"); // 버튼 초기화
 
+    //connect MainMultiSocket
+    MainMulticastSocket mainSocket = new MainMulticastSocket();
+
     public MainView() {
         super("Test"); // JFrame의 생성자에 값을 입력하면 윈도창에 해당 값이 입력됩니다.
 
@@ -20,22 +25,23 @@ public class MainView extends JFrame {
 
         jb.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
-                //setVisible(false);
-                SendView cv = new SendView(jb.getText());
+                setVisible(false);
+                SendView cv = new SendView(mainSocket);
+                mainSocket.init(jb.getText());
             }
         });
 
         jb2.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
-                //setVisible(false);
-                SendView cv = new SendView(jb2.getText());
+                setVisible(false);
+                SendView cv = new SendView(mainSocket);
             }
         });
 
         jb3.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
-                //setVisible(false);
-                SendView cv = new SendView(jb3.getText());
+                setVisible(false);
+                SendView cv = new SendView(mainSocket);
             }
         });
 
