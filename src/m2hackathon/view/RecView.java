@@ -12,11 +12,11 @@ public class RecView extends JFrame{
     JLabel la = new JLabel();
     public RecView(ArrayList<String> receiveArray)
     {
+        super("recView");
         ArrayList<String> r = new ArrayList<>();
         r = receiveArray;
         la.setText(r.toString());
         setSize(600,600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
 

@@ -36,7 +36,10 @@ public class MainMulticastSocket
                         @Override
                         public void run() {
                             System.out.println("receiver start");
-                            receiveMessage();
+
+                            //데이터를 받은 후 다시 데이터를 받기위해 기다림
+                            while(true)
+                                receiveMessage();
                         }
                     }
             );
