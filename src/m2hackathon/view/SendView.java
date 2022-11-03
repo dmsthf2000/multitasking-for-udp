@@ -50,29 +50,45 @@ public class SendView extends JFrame{
 
         chk1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
+                if(chk1.isSelected())
+                    sendList.add(chk1.getText());
+                else
+                    sendList.remove(chk1.getText());
+
                 System.out.println(sendList);
-                sendList.add(chk1.getText());
             }
         });
 
         chk2.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
+                if(chk2.isSelected())
+                    sendList.add(chk2.getText());
+                else
+                    sendList.remove(chk2.getText());
+
                 System.out.println(sendList);
-                sendList.add(chk2.getText());
             }
         });
 
         chk3.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
+                if(chk3.isSelected())
+                    sendList.add(chk3.getText());
+                else
+                    sendList.remove(chk3.getText());
+
                 System.out.println(sendList);
-                sendList.add(chk3.getText());
             }
         });
 
         chk4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
+                if(chk3.isSelected())
+                    sendList.add(chk3.getText());
+                else
+                    sendList.remove(chk3.getText());
+
                 System.out.println(sendList);
-                sendList.add(chk4.getText());
             }
         });
 
