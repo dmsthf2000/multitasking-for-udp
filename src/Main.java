@@ -1,10 +1,11 @@
-import m2hackathon.accessMulticast.SetMultiSocket;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.UnknownHostException;
-
 public class Main
 {
+import m2.view.DialogView;
+import m2.view.MainView;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+        MainView mv = new MainView();
+    }
 }
