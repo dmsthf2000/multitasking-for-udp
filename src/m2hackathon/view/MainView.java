@@ -1,4 +1,4 @@
-package m2.view;
+package m2hackathon.view;
 import m2hackathon.mainMulticast.MainMulticastSocket;
 
 import javax.swing.*;

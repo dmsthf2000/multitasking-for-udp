@@ -1,4 +1,4 @@
-package m2.view;
+package m2hackathon.view;
 
 import java.util.ArrayList;
 

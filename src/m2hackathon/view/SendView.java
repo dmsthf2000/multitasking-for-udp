@@ -1,4 +1,4 @@
-package m2.view;
+package m2hackathon.view;
 
 import m2hackathon.mainMulticast.MainMulticastSocket;
 
@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.net.MulticastSocket;
 import java.util.ArrayList;
 
 import javax.swing.*;

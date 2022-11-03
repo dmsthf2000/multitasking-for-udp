@@ -21,6 +21,7 @@ public class SendData
         String startMsg = "start / " + localAddress;
         DatagramPacket startPacket = makePacket(startMsg, multicastAddress, multicastPort);
 
+        System.out.println("dataMsg : " + dataMsg);
         //dataMsg
         DatagramPacket dataPacket = makePacket(dataMsg, multicastAddress, multicastPort);
 
@@ -30,9 +31,9 @@ public class SendData
 
         try
         {
-            mulSocket.send(startPacket);
+//            mulSocket.send(startPacket);
             mulSocket.send(dataPacket);
-            mulSocket.send(endPacket);
+//            mulSocket.send(endPacket);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

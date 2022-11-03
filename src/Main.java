@@ -1,4 +1,4 @@
-import m2.view.MainView;
+import m2hackathon.view.MainView;
 
 public class Main {
     public static void main(String[] args)
