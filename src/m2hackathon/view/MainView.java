@@ -36,6 +36,7 @@ public class MainView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 SendView cv = new SendView(mainSocket);
+                mainSocket.init(jb.getText());
             }
         });
 
@@ -43,6 +44,7 @@ public class MainView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 SendView cv = new SendView(mainSocket);
+                mainSocket.init(jb.getText());
             }
         });
 

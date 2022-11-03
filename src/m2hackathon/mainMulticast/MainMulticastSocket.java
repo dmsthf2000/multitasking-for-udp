@@ -46,6 +46,7 @@ public class MainMulticastSocket
 
     public void sendMessage(ArrayList<String> sendList, String msg)
     {
+
         System.out.println("sendList : " + sendList.toString());
         System.out.println("msg : " + msg);
 
@@ -59,7 +60,7 @@ public class MainMulticastSocket
                         SendData sendData = new SendData();
                         System.out.println("nowPort : "+teamSocket.getLocalPort());
                         System.out.println("address : "+address.getHostAddress());
-                        sendData.sendDataToRecevier(teamSocket, address, 3000, msg);
+                        sendData.sendDataToRecevier(teamSocket, address, 7000, msg);
                     }
                 }
         );

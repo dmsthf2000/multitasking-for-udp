@@ -31,11 +31,11 @@ public class SetMultiSocket
     private int setPort(String team) {
         switch (team){
             case "A":
-                return 3000;
+                return 7000;
             case "B":
-                return 3001;
+                return 7001;
             case "C":
-                return 3002;
+                return 7002;
             default:
                 return -1;
         }
