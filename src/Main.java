@@ -1,3 +1,4 @@
+import m2.view.DialogView;
 import m2.view.MainView;
 
 public class Main {
