@@ -8,9 +8,12 @@ import java.awt.event.ActionListener;
 
 public class MainView extends JFrame {
     JPanel jp = new JPanel(); // 패널 초기화
-    JButton jb = new JButton("A"); // 버튼 초기화
-    JButton jb2 = new JButton("B"); // 버튼 초기화
-    JButton jb3 = new JButton("C"); // 버튼 초기화
+    JButton jb = new JButton("Application"); // 버튼 초기화
+    JButton jb2 = new JButton("Server"); // 버튼 초기화
+    JButton jb3 = new JButton("Solution"); // 버튼 초기화
+    JButton jb4 = new JButton("Engine"); // 버튼 초기화
+    JButton jb5 = new JButton("PM"); // 버튼 초기화
+    JButton jb6 = new JButton("QA"); // 버튼 초기화
 
     //connect MainMultiSocket
     MainMulticastSocket mainSocket = new MainMulticastSocket();
@@ -21,13 +24,16 @@ public class MainView extends JFrame {
         jp.add(jb); // jp라는 패널에 jb라는 버튼 추가
         jp.add(jb2);
         jp.add(jb3);
+        jp.add(jb4);
+        jp.add(jb5);
+        jp.add(jb6);
         add(jp); // JFrame에 jp라는 패널 추가
 
         jb.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new SendView(mainSocket);
-                mainSocket.init(jb.getText());
+                mainSocket.init("A");
 
             }
         });
@@ -36,7 +42,7 @@ public class MainView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new SendView(mainSocket);
-                mainSocket.init(jb2.getText());
+                mainSocket.init("B");
             }
         });
 
@@ -44,7 +50,31 @@ public class MainView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new SendView(mainSocket);
-                mainSocket.init(jb3.getText());
+                mainSocket.init("C");
+            }
+        });
+
+        jb4.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new SendView(mainSocket);
+                mainSocket.init("D");
+            }
+        });
+
+        jb5.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new SendView(mainSocket);
+                mainSocket.init("E");
+            }
+        });
+
+        jb6.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new SendView(mainSocket);
+                mainSocket.init("F");
             }
         });
 
