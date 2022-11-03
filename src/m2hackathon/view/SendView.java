@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 
@@ -28,15 +29,21 @@ public class SendView extends JFrame{
         JButton sendBtn = new JButton("send");
         JTextField tf = new JTextField(10);
 
-        JCheckBox chk1 = new JCheckBox("A",false);
-        JCheckBox chk2 = new JCheckBox("B",false);
-        JCheckBox chk3 = new JCheckBox("C",false);
-        JCheckBox chk4 = new JCheckBox("All",false);
+        JCheckBox chk1 = new JCheckBox("Application",false);
+        JCheckBox chk2 = new JCheckBox("Server",false);
+        JCheckBox chk3 = new JCheckBox("Solution",false);
+        JCheckBox chk4 = new JCheckBox("Engine",false);
+        JCheckBox chk5 = new JCheckBox("PM",false);
+        JCheckBox chk6 = new JCheckBox("QA",false);
+        JCheckBox chk7 = new JCheckBox("All",false);
 
         this.add(chk1);
         this.add(chk2);
         this.add(chk3);
         this.add(chk4);
+        this.add(chk5);
+        this.add(chk6);
+        this.add(chk7);
 
         backBtn.addActionListener(new ActionListener() {
             @Override
@@ -51,9 +58,9 @@ public class SendView extends JFrame{
         chk1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if(chk1.isSelected())
-                    sendList.add(chk1.getText());
+                    sendList.add("A");
                 else
-                    sendList.remove(chk1.getText());
+                    sendList.remove("A");
 
                 System.out.println(sendList);
             }
@@ -62,9 +69,9 @@ public class SendView extends JFrame{
         chk2.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if(chk2.isSelected())
-                    sendList.add(chk2.getText());
+                    sendList.add("B");
                 else
-                    sendList.remove(chk2.getText());
+                    sendList.remove("B");
 
                 System.out.println(sendList);
             }
@@ -73,9 +80,9 @@ public class SendView extends JFrame{
         chk3.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if(chk3.isSelected())
-                    sendList.add(chk3.getText());
+                    sendList.add("C");
                 else
-                    sendList.remove(chk3.getText());
+                    sendList.remove("C");
 
                 System.out.println(sendList);
             }
@@ -84,13 +91,51 @@ public class SendView extends JFrame{
         chk4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if(chk4.isSelected())
-                    sendList.add(chk4.getText());
+                    sendList.add("D");
                 else
-                    sendList.remove(chk4.getText());
+                    sendList.remove("D");
 
                 System.out.println(sendList);
             }
         });
+
+        chk5.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if(chk5.isSelected())
+                    sendList.add("E");
+                else
+                    sendList.remove("E");
+
+                System.out.println(sendList);
+            }
+        });
+
+        chk6.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if(chk6.isSelected())
+                    sendList.add("F");
+                else
+                    sendList.remove("F");
+
+                System.out.println(sendList);
+            }
+        });
+
+        chk7.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                ArrayList<String> arr = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F"));
+                if(chk7.isSelected()) {
+                    sendList.addAll(arr);
+                }
+                else {
+                    sendList.removeAll(arr);
+
+                }
+
+                System.out.println(sendList);
+            }
+        });
+
 
         sendBtn.addActionListener(new ActionListener() {
             @Override

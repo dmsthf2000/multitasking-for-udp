@@ -4,6 +4,7 @@ import m2hackathon.mainMulticast.MainMulticastSocket;
 
 import java.awt.*;
 import java.lang.reflect.Array;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -15,8 +16,14 @@ public class RecView extends JFrame{
         super("recView");
         ArrayList<String> r = new ArrayList<>();
         r = receiveArray;
+
+        LocalTime now = LocalTime.now();
+
+        la.setText("message :" + r.get(0));
+        la.setText("보낸 사람 : " + r.get(1));
+        la.setText("보낸 시간 : " + now);
         la.setText(r.toString());
-        setSize(600,600);
+        setSize(300,300);
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
 
