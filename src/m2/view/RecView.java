@@ -1,13 +1,20 @@
 package m2.view;
 
+import m2hackathon.mainMulticast.MainMulticastSocket;
+
 import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 public class RecView extends JFrame{
     JLabel la = new JLabel();
-    RecView(String msg){
-        la.setText(msg);
+    public RecView(ArrayList<String> receiveArray){
+        System.out.println("rec");
+        ArrayList<String> r = new ArrayList<>();
+        r = receiveArray;
+        la.setText(r.toString());
         setSize(600,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = getContentPane();
@@ -16,5 +23,4 @@ public class RecView extends JFrame{
         c.add(la);
         setVisible(true);
     }
-
 }

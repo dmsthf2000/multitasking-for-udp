@@ -18,7 +18,7 @@ public class SendView extends JFrame{
     MainMulticastSocket mainSocket = null;
     SendView(MainMulticastSocket mainSocket){
         super("YourFrame");
-
+        System.out.println("sendView");
         this.mainSocket = mainSocket;
 
         setSize(600,600);
@@ -84,8 +84,8 @@ public class SendView extends JFrame{
                 //setVisible(false);
 
                 mainSocket.sendMessage(sendList, msg);
-                new DialogView(sendList, msg);
-                new RecView(msg);
+//                new DialogView(sendList, msg);
+//                new RecView(msg);
             }
         });
 

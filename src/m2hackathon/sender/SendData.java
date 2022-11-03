@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 
 public class SendData
 {
-    private void sendDataToRecevier(MulticastSocket mulSocket, InetAddress multicastAddress, int multicastPort, String dataMsg)
+    public void sendDataToRecevier(MulticastSocket mulSocket, InetAddress multicastAddress, int multicastPort, String dataMsg)
     {
         String localAddress = "";
         try

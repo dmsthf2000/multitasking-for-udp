@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.MulticastSocket;
 import java.net.SocketAddress;
 
-public class receiveData
+public class ReceiveData
 {
     DatagramPacket receivedPacket;
 

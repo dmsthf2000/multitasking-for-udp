@@ -26,8 +26,9 @@ public class MainView extends JFrame {
         jb.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                SendView cv = new SendView(mainSocket);
+                new SendView(mainSocket);
                 mainSocket.init(jb.getText());
+
             }
         });
 

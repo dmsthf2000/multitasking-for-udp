@@ -1,27 +1,32 @@
 package m2hackathon.mainMulticast;
 
+import m2.view.RecView;
 import m2hackathon.accessMulticast.SetMultiSocket;
+import m2hackathon.receiver.ReceiveData;
+import m2hackathon.sender.SendData;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
+import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class MainMulticastSocket
 {
+    MulticastSocket teamSocket = null;
+    InetAddress address = null;
     public void init(String team)
     {
-        MulticastSocket teamSocket = null;
-
         //멀티캐스트 팀소켓 생성
         SetMultiSocket sm = new SetMultiSocket();
         teamSocket = sm.getMulticastSocket(team);
 
         //임의의 멀티캐스트 ip 지정
         try {
-            InetAddress address = InetAddress.getByName("224.128.1.5");
+            address = InetAddress.getByName("224.128.1.5");
             teamSocket.joinGroup(address);
+            receiveMessage();
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -34,5 +39,23 @@ public class MainMulticastSocket
         System.out.println("sendList : " + sendList.toString());
         System.out.println("msg : " + msg);
 
+        SendData sendData = new SendData();
+        System.out.println("nowPort : "+teamSocket.getLocalPort());
+        System.out.println("address : "+address.getHostAddress());
+        sendData.sendDataToRecevier(teamSocket, address, 3000, msg);
+    }
+
+    public void receiveMessage()
+    {
+        ReceiveData receiveData = new ReceiveData();
+        receiveData.receiveDataToSender(teamSocket);
+        String msg = receiveData.getData();
+        SocketAddress sender = receiveData.getSender();
+        ArrayList<String> receiveArray = new ArrayList<>();
+        receiveArray.add(msg);
+        receiveArray.add(sender.toString());
+
+        if(receiveArray.size()>0)
+            new RecView(receiveArray);
     }
 }
