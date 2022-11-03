@@ -1,8 +1,0 @@
-import m2.view.MainView;
-
-public class Main {
-    public static void main(String[] args)
-    {
-        MainView mv = new MainView();
-    }
-}
