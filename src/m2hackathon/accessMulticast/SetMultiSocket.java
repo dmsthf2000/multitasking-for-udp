@@ -28,7 +28,7 @@ public class SetMultiSocket
     }
 
     //GUI에서 받은 값으로 임의의 포트를 지정
-    private int setPort(String team) {
+    public int setPort(String team) {
         switch (team){
             case "A":
                 return 7000;

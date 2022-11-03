@@ -35,16 +35,16 @@ public class MainView extends JFrame {
         jb2.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                SendView cv = new SendView(mainSocket);
-                mainSocket.init(jb.getText());
+                new SendView(mainSocket);
+                mainSocket.init(jb2.getText());
             }
         });
 
         jb3.addActionListener(new ActionListener() {    //btn1을 눌렀을 때 효과추가
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                SendView cv = new SendView(mainSocket);
-                mainSocket.init(jb.getText());
+                new SendView(mainSocket);
+                mainSocket.init(jb3.getText());
             }
         });
 

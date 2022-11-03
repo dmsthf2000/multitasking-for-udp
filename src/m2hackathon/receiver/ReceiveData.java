@@ -13,10 +13,12 @@ public class ReceiveData
     {
         byte[] receivedData = new byte[65508];
         receivedPacket = new DatagramPacket(receivedData, receivedData.length);
-        System.out.println("received Data : " + new String(receivedPacket.getData()).trim());
-        try {
+        try
+        {
             mulSocket.receive(receivedPacket);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             throw new RuntimeException(e);
         }
     }
@@ -31,8 +33,6 @@ public class ReceiveData
 
     public String getData()
     {
-
-        System.out.println("received Data getData(): " + new String(receivedPacket.getData()).trim());
         if(receivedPacket == null || receivedPacket.getData().length < 1)
             return null;
 

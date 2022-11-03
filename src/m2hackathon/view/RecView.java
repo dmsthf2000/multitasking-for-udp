@@ -10,8 +10,8 @@ import javax.swing.*;
 
 public class RecView extends JFrame{
     JLabel la = new JLabel();
-    public RecView(ArrayList<String> receiveArray){
-        System.out.println("rec");
+    public RecView(ArrayList<String> receiveArray)
+    {
         ArrayList<String> r = new ArrayList<>();
         r = receiveArray;
         la.setText(r.toString());

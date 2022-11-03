@@ -11,69 +11,95 @@ import java.net.MulticastSocket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainMulticastSocket
 {
     MulticastSocket teamSocket = null;
+    SetMultiSocket sm = new SetMultiSocket();
     InetAddress address = null;
+
     public void init(String team)
     {
         //멀티캐스트 팀소켓 생성
-        SetMultiSocket sm = new SetMultiSocket();
         teamSocket = sm.getMulticastSocket(team);
 
         //임의의 멀티캐스트 ip 지정
         try {
             address = InetAddress.getByName("224.128.1.5");
+            //멀티캐스트 접속
             teamSocket.joinGroup(address);
-            Thread th5 = new Thread(
+
+            //데이터 수신 기다리는 코드
+            Thread receiver = new Thread(
                     new Runnable() {
                         @Override
                         public void run() {
-                            System.out.println("5");
+                            System.out.println("receiver start");
                             receiveMessage();
                         }
                     }
             );
-            th5.start();
+            receiver.setName("receiverThread");
+            receiver.start();
 
-        } catch (UnknownHostException e) {
+        }
+        catch (UnknownHostException e)
+        {
             throw new RuntimeException(e);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             throw new RuntimeException(e);
         }
     }
 
+    //데이터 송신하는 부분
     public void sendMessage(ArrayList<String> sendList, String msg)
     {
-
-        System.out.println("sendList : " + sendList.toString());
-        System.out.println("msg : " + msg);
-
-
         Thread sender = new Thread(
                 new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println("5");
+                        System.out.println("sender start");
 
+                        //team 값을 port로 변환
+                        List<Integer> portArray = new ArrayList<>();
+                        portArray = getPortArray(sendList);
+
+                        //선택한 모든 port에 데이터 전송
                         SendData sendData = new SendData();
-                        System.out.println("nowPort : "+teamSocket.getLocalPort());
-                        System.out.println("address : "+address.getHostAddress());
-                        sendData.sendDataToRecevier(teamSocket, address, 7000, msg);
+                        for(int i = 0; i < portArray.size(); i++)
+                        {
+                            sendData.sendDataToRecevier(teamSocket, address, portArray.get(i), msg);
+                        }
                     }
                 }
         );
+        sender.setName("senderThread");
         sender.start();
 
+    }
+
+    private List<Integer> getPortArray(List<String> sendList)
+    {
+        List<Integer> portArray = new ArrayList<>();
+        for(int i = 0; i < sendList.size(); i++)
+        {
+            portArray.add(sm.setPort(sendList.get(i)));
+        }
+
+        return portArray;
     }
 
     public void receiveMessage()
     {
         ReceiveData receiveData = new ReceiveData();
         receiveData.receiveDataToSender(teamSocket);
+
         String msg = receiveData.getData();
         SocketAddress sender = receiveData.getSender();
+
         ArrayList<String> receiveArray = new ArrayList<>();
         if(msg != null || msg.length() > 0)
         {
