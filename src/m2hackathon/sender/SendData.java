@@ -14,25 +14,15 @@ public class SendData
         try
         {
             localAddress = InetAddress.getLocalHost().getHostAddress();
-        }
-        catch (UnknownHostException e) {throw new RuntimeException(e);}
 
-        //startMsg
-        String startMsg = "start / " + localAddress;
-        DatagramPacket startPacket = makePacket(startMsg, multicastAddress, multicastPort);
+            //dataMsg
+            DatagramPacket dataPacket = makePacket(dataMsg, multicastAddress, multicastPort);
 
-        //dataMsg
-        DatagramPacket dataPacket = makePacket(dataMsg, multicastAddress, multicastPort);
-
-        //endMsg
-        String endMsg = "end / " + localAddress;
-        DatagramPacket endPacket = makePacket(endMsg, multicastAddress, multicastPort);
-
-        try
-        {
-//            mulSocket.send(startPacket);
             mulSocket.send(dataPacket);
-//            mulSocket.send(endPacket);
+        }
+        catch (UnknownHostException e)
+        {
+            throw new RuntimeException(e);
         }
         catch (IOException e)
         {
