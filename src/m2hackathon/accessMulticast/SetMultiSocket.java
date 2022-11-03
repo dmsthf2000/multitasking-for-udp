@@ -36,6 +36,8 @@ public class SetMultiSocket
                 return 7001;
             case "C":
                 return 7002;
+            case "All":
+                return 7003;
             default:
                 return -1;
         }

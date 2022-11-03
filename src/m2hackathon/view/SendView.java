@@ -83,10 +83,10 @@ public class SendView extends JFrame{
 
         chk4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                if(chk3.isSelected())
-                    sendList.add(chk3.getText());
+                if(chk4.isSelected())
+                    sendList.add(chk4.getText());
                 else
-                    sendList.remove(chk3.getText());
+                    sendList.remove(chk4.getText());
 
                 System.out.println(sendList);
             }
