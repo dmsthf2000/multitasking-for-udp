@@ -58,6 +58,18 @@ public class MainMulticastSocket
         }
     }
 
+    public void leaveGroup()
+    {
+        try
+        {
+            teamSocket.leaveGroup(address);
+        }
+        catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
     //데이터 송신하는 부분
     public void sendMessage(ArrayList<String> sendList, String msg)
     {
