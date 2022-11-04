@@ -1,9 +1,11 @@
 package m2hackathon.receiver;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
 import java.net.MulticastSocket;
 import java.net.SocketAddress;
+import java.nio.charset.Charset;
 
 public class ReceiveData
 {
@@ -36,6 +38,7 @@ public class ReceiveData
         if(receivedPacket == null || receivedPacket.getData().length < 1)
             return null;
 
-        return new String(receivedPacket.getData()).trim();
+        Charset charset = Charset.defaultCharset();
+        return new String(receivedPacket.getData(), charset).trim();
     }
 }

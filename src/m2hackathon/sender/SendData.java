@@ -1,10 +1,13 @@
 package m2hackathon.sender;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
+import java.nio.charset.Charset;
+import java.util.concurrent.Callable;
 
 public class SendData
 {
@@ -31,7 +34,12 @@ public class SendData
     }
     private DatagramPacket makePacket(String sendMsg, InetAddress multicastAddress, int multicastPort)
     {
-        DatagramPacket sendPacket = new DatagramPacket(sendMsg.getBytes(), sendMsg.length(), multicastAddress, multicastPort);
+        Charset charset =  Charset.defaultCharset();
+        byte[] bytes = sendMsg.getBytes(charset);
+        DatagramPacket sendPacket = null;
+        sendPacket = new DatagramPacket(bytes, bytes.length, multicastAddress, multicastPort);
+
         return sendPacket;
     }
 }
+
