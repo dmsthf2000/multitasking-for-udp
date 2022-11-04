@@ -13,21 +13,29 @@ import java.util.Arrays;
 import javax.swing.*;
 
 public class SendView extends JFrame{
-    JLabel la = new JLabel("You");
+
+
+    public static JLabel LogMsg(String str) {
+        JLabel la = new JLabel(str);
+        System.out.println("hi");
+        JPanel jp = new JPanel();
+        jp.add(la);
+        return la;
+    }
 
     MainMulticastSocket mainSocket = null;
     SendView(MainMulticastSocket mainSocket){
         super("YourFrame");
         System.out.println("sendView");
         this.mainSocket = mainSocket;
-
         setSize(600,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
         JButton backBtn = new JButton("back");
         JButton sendBtn = new JButton("send");
-        JTextField tf = new JTextField(10);
+        JButton LogBtn = new JButton("Log");
+        JTextArea tf = new JTextArea(20,40);
 
         JCheckBox chk1 = new JCheckBox("Application",false);
         JCheckBox chk2 = new JCheckBox("Server",false);
@@ -50,6 +58,13 @@ public class SendView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new MainView();
+            }
+        });
+
+        LogBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mainSocket.getAllData();
             }
         });
 
@@ -141,18 +156,14 @@ public class SendView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String msg = tf.getText();
-                //setVisible(false);
-
                 mainSocket.sendMessage(sendList, msg);
-//                new DialogView(sendList, msg);
-//                new RecView(msg);
             }
         });
 
-        c.add(la);
-        c.add(backBtn);
-        c.add(sendBtn);
         c.add(tf);
+        c.add(sendBtn);
+        c.add(backBtn);
+        c.add(LogBtn);
         setVisible(true);
     }
 

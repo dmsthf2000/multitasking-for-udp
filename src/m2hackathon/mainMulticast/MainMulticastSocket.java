@@ -1,5 +1,6 @@
 package m2hackathon.mainMulticast;
 
+import m2hackathon.view.LogView;
 import m2hackathon.view.RecView;
 import m2hackathon.accessMulticast.SetMultiSocket;
 import m2hackathon.receiver.ReceiveData;
