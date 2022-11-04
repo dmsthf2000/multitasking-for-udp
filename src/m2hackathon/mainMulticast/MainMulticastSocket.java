@@ -26,7 +26,7 @@ public class MainMulticastSocket
 
         //임의의 멀티캐스트 ip 지정
         try {
-            address = InetAddress.getByName("234.234.234.234");
+            address = InetAddress.getByName("239.0.0.1");
             //멀티캐스트 접속
             teamSocket.joinGroup(address);
 
@@ -102,12 +102,16 @@ public class MainMulticastSocket
 
         String msg = receiveData.getData();
         SocketAddress sender = receiveData.getSender();
+        String date = receiveData.getDate();
+        String time = receiveData.getTime();
 
         ArrayList<String> receiveArray = new ArrayList<>();
         if(msg != null || msg.length() > 0)
         {
             receiveArray.add(msg);
             receiveArray.add(sender.toString());
+            receiveArray.add(date);
+            receiveArray.add(time);
         }
         if(receiveArray.size()>0)
             new RecView(receiveArray);
