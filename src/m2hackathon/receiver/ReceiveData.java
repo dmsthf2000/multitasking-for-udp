@@ -9,10 +9,13 @@ import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReceiveData
 {
     DatagramPacket receivedPacket;
+    List<List<String>> logDataArray = new ArrayList<>();
 
     public void receiveDataToSender(MulticastSocket mulSocket)
     {
@@ -73,5 +76,15 @@ public class ReceiveData
         String formatedNow = LocalTime.now().format(formatter);
 
         return formatedNow;
+    }
+
+    public void addLogDataArray(ArrayList<String> receiveArray)
+    {
+        logDataArray.add(receiveArray);
+    }
+
+    public List<List<String>> getLogDataArray()
+    {
+        return logDataArray;
     }
 }

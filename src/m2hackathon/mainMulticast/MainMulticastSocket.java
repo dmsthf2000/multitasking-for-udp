@@ -18,6 +18,7 @@ public class MainMulticastSocket
     MulticastSocket teamSocket = null;
     SetMultiSocket sm = new SetMultiSocket();
     InetAddress address = null;
+    ReceiveData receiveData = new ReceiveData();
 
     public void init(String team)
     {
@@ -97,7 +98,6 @@ public class MainMulticastSocket
 
     public void receiveMessage()
     {
-        ReceiveData receiveData = new ReceiveData();
         receiveData.receiveDataToSender(teamSocket);
 
         String msg = receiveData.getData();
@@ -113,7 +113,15 @@ public class MainMulticastSocket
             receiveArray.add(date);
             receiveArray.add(time);
         }
-        if(receiveArray.size()>0)
+
+        if(receiveArray.size()>0) {
+            receiveData.addLogDataArray(receiveArray);
             new RecView(receiveArray);
+        }
+    }
+
+    public void getAllData()
+    {
+        new LogView(receiveData.getLogDataArray());
     }
 }
