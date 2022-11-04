@@ -30,7 +30,6 @@ public class MainMulticastSocket
             address = InetAddress.getByName("239.0.0.1");
             //멀티캐스트 접속
             teamSocket.joinGroup(address);
-
             //데이터 수신 기다리는 코드
             Thread receiver = new Thread(
                     new Runnable() {
@@ -120,8 +119,8 @@ public class MainMulticastSocket
         }
     }
 
-    public void getAllData()
-    {
-        new LogView(receiveData.getLogDataArray());
-    }
+//    public void getAllData()
+//    {
+//        new LogView(receiveData.getLogDataArray());
+//    }
 }
