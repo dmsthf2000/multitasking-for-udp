@@ -34,10 +34,9 @@ public class SendData
     }
     private DatagramPacket makePacket(String sendMsg, InetAddress multicastAddress, int multicastPort)
     {
-        Charset charset =  Charset.defaultCharset();
-        byte[] bytes = sendMsg.getBytes(charset);
-        DatagramPacket sendPacket = null;
-        sendPacket = new DatagramPacket(bytes, bytes.length, multicastAddress, multicastPort);
+        Charset charset = Charset.forName("utf-8");
+        byte[] sendBytes = sendMsg.getBytes(charset);
+        DatagramPacket sendPacket = new DatagramPacket(sendBytes, sendBytes.length, multicastAddress, multicastPort);
 
         return sendPacket;
     }

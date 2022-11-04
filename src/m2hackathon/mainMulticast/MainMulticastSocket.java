@@ -26,7 +26,7 @@ public class MainMulticastSocket
 
         //임의의 멀티캐스트 ip 지정
         try {
-            address = InetAddress.getByName("224.224.224.45");
+            address = InetAddress.getByName("234.234.234.234");
             //멀티캐스트 접속
             teamSocket.joinGroup(address);
 

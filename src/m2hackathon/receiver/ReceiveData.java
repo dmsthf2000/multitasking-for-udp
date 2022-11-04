@@ -38,7 +38,7 @@ public class ReceiveData
         if(receivedPacket == null || receivedPacket.getData().length < 1)
             return null;
 
-        Charset charset = Charset.defaultCharset();
+        Charset charset = Charset.forName("utf-8");
         return new String(receivedPacket.getData(), charset).trim();
     }
 }
