@@ -14,15 +14,6 @@ import javax.swing.*;
 
 public class SendView extends JFrame{
 
-
-    public static JLabel LogMsg(String str) {
-        JLabel la = new JLabel(str);
-        System.out.println("hi");
-        JPanel jp = new JPanel();
-        jp.add(la);
-        return la;
-    }
-
     MainMulticastSocket mainSocket = null;
     SendView(MainMulticastSocket mainSocket){
         super("YourFrame");
