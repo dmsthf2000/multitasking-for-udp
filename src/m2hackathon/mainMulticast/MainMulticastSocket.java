@@ -120,8 +120,8 @@ public class MainMulticastSocket
         }
     }
 
-//    public void getAllData()
-//    {
-//        new LogView(receiveData.getLogDataArray());
-//    }
+    public void getAllData()
+    {
+        new LogView(receiveData.getLogDataArray());
+    }
 }
