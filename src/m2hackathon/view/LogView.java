@@ -27,9 +27,8 @@ public class LogView extends JFrame{
         //4. 컴포넌트에  Table 추가
         add(sc);
 
-        setBounds(0, 0, 300, 150);
+        setBounds(0, 0, 500, 150);
         setVisible(true);
-
     }
 
     public static String[][] convertToArray(List<List<String>> list) {
